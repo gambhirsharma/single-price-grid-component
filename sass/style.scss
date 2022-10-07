@@ -1,0 +1,199 @@
+@import "../node_modules/normalize.css/normalize.css";
+
+$prim-cyan: hsl(179, 62%, 43%);
+$prim-yellow: hsl(71, 73%, 54%);
+
+$neu-light-gray: hsl(204, 43%, 93%);
+$neu-gray-blue: hsl(218, 22%, 67%);
+
+$font-size: 16px;
+$font-family: "Karla", sans-serif;
+$font-regular: 400;
+$font-bold: 700;
+
+$white: hsl(0, 0%, 100%);
+$light-cyan: hsl(179, 47%, 52%);
+
+body {
+  font-size: $font-size;
+  background-color: $neu-light-gray;
+  font-weight: $font-regular;
+  font-family: $font-family;
+  margin: 5em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* grid */
+
+.price-grid {
+  display: grid;
+  overflow: hidden;
+  min-height: 100vh;
+  min-width: 12rem;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, auto);
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em 0 hsla(0, 0%, 20%, 0.2);
+  /* grid section 1*/
+  &__join {
+    padding: 1em 1.5em;
+    background-color: $white;
+    &-heading {
+      color: $prim-cyan;
+      font-size: 1.25rem;
+      margin-bottom: 1.25em;
+      margin-top: 0.75em;
+    }
+    &-intro {
+      color: $prim-yellow;
+      margin-bottom: 2em;
+      font-size: 1rem;
+      line-height: 120%;
+    }
+    &-details {
+      font-size: 0.85rem;
+      line-height: 200%;
+      color: $neu-gray-blue;
+    }
+  }
+  /* grid section 2*/
+  &__subscription {
+    padding: 0.85em 1.5em;
+    background-color: $prim-cyan;
+    color: $white;
+    &-heading {
+      font-size: 1.1rem;
+      margin-bottom: 1em;
+      margin-top: 0.75em;
+    }
+    &-cost {
+      font-size: 2rem;
+      margin-top: 0.25em;
+      margin-bottom: 0;
+      &--special {
+        font-size: 1rem;
+        margin-left: 0.75em;
+        color: rgba($neu-light-gray, 0.75);
+      }
+    }
+    &-details {
+      font-size: 0.95rem;
+      margin-top: 0.75em;
+      margin-bottom: 2em;
+    }
+    &-sign-up {
+      display: block;
+      padding: 1em;
+      text-decoration: none;
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 0.35em;
+      font-weight: $font-bold;
+      color: inherit;
+      background-color: $prim-yellow;
+      border: none;
+      border-radius: 0.25em;
+      box-shadow: 0 0 1em 0 hsla(0, 0%, 20%, 0.2);
+      cursor: pointer;
+      transition: transform 100ms ease-in-out;
+      &:hover,
+      &:focus-visible {
+        outline: 3px dotted $prim-yellow !important;
+        outline-offset: 0.25rem;
+      }
+      &:focus:not(:focus-visible) {
+        outline: transparent;
+      }
+      &:active {
+        outline: 3px dotted $prim-yellow;
+        transform: scale(0.95);
+      }
+    }
+  }
+  /* grid section 3*/
+  &__why-us {
+    padding: 1em 1.5em;
+    background-color: $light-cyan;
+    &-heading {
+      color: $white;
+      font-size: 1.25rem;
+      margin-bottom: 1.25em;
+      margin-top: 0.75em;
+    }
+    &-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    &-list-item {
+      color: rgba($neu-light-gray, 0.75);
+      font-size: 0.9rem;
+      margin-bottom: 0.2em;
+    }
+  }
+}
+
+/* footer */
+
+.attribution {
+  font-size: 0.75rem;
+  text-align: center;
+  color: $white;
+  margin-top: 3rem;
+  color: $neu-gray-blue;
+  font-weight: $font-bold;
+  a {
+    text-decoration: none;
+    font-weight: $font-bold;
+    &:hover,
+    &:focus-visible {
+      outline: 3px dotted $prim-yellow !important;
+      outline-offset: 0.25rem;
+      color: $prim-cyan;
+    }
+    &:focus:not(:focus-visible) {
+      outline: transparent;
+    }
+  }
+}
+
+/* media queries */
+
+@media only screen and (min-width: 39.5rem) {
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+  .price-grid {
+    grid-template-columns: 50% 50%;
+    max-width: 39rem;
+    min-height: 0;
+  }
+  .price-grid__join {
+    grid-column: 1/3;
+  }
+  .price-grid__subscription {
+    grid-column: 1/2;
+  }
+  .price-grid__why-us {
+    grid-column: 2/2;
+  }
+  .attribution {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+/* dont let footer come on top of the grid */
+
+@media only screen and (max-height: 40rem) {
+  body {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  .attribution {
+    position: relative;
+  }
+}
